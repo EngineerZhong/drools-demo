@@ -1,0 +1,11 @@
+package com.puyuan.rules.collections;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.School
+
+
+rule "set"
+    when
+        $s:School()
+    then
+        System.out.println("set规则获取第一个值：" + $s.getMemberSet().toArray()[0]);
+end

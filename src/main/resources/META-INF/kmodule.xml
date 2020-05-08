@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.drools.org/xsd/kmodule">
+
+    <kbase name="rule1KB" packages="com.puyuan.rules.test">
+        <ksession name="ruleOne"/>
+    </kbase>
+
+    <kbase name="rule2KB" packages="com.puyuan.rules.one">
+        <ksession name="One"/>
+    </kbase>
+
+    <kbase name="rule3KB" packages="com.puyuan.rules.iscontains">
+        <ksession name="contains"/>
+    </kbase>
+
+    <kbase name="rule4KB" packages="com.puyuan.rules.memberof">
+        <ksession name="memberof"/>
+    </kbase>
+
+    <kbase name="rule5KB" packages="com.puyuan.rules.matches_demo">
+        <ksession name="matches"/>
+    </kbase>
+
+    <kbase name="rule6KB" packages="com.puyuan.rules.str_demo">
+        <ksession name="str"/>
+    </kbase>
+
+    <kbase name="rule7KB" packages="com.puyuan.rules.collections">
+        <ksession name="collection"/>
+    </kbase>
+</kmodule>

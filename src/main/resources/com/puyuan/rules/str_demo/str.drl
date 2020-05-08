@@ -1,0 +1,25 @@
+package com.puyuan.rules.str_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+
+rule "str_demo"
+    when
+        $p:Person(name str[startsWith] "大")
+    then
+        System.out.println("str[startsWith]规则执行到");
+end
+
+rule "str_demo2"
+    when
+        $p:Person(name str[endsWith] "。")
+    then
+        System.out.println("str[endsWith]规则执行到");
+end
+
+rule "str_demo3"
+    when
+        $p:Person(name str[length] 6)
+    then
+        System.out.println("str[length]规则执行到");
+end

@@ -1,0 +1,20 @@
+package com.puyuan.rules.memberof;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.School
+import com.puyuan.iotmanager.fact.Person
+
+rule "memberof"
+    when
+        $s:School();
+        $p:Person(className memberOf $s.getClassName())
+    then
+        System.out.println("memberof规则成功执行。");
+end
+
+rule "memberof2"
+    when
+        $s:School();
+        $p:Person(className memberOf $s.getClassNameArray())
+    then
+        System.out.println("memberof2规则成功执行。");
+end

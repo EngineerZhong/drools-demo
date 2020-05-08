@@ -1,0 +1,10 @@
+package com.puyuan.rules.matches_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+rule "matches"
+    when
+        $p:Person(name matches "大离.*")
+    then
+        System.out.println("matches规则被执行到。");
+end

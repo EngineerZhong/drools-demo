@@ -1,0 +1,23 @@
+package com.puyuan.rules.iscontains;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+import com.puyuan.iotmanager.fact.School
+
+rule "contains"
+    when
+        $s:School()
+        $p:Person(className contains $s.getClassName())
+    then
+        $s.setClassName("三年一班");
+        update($s);
+        System.out.println("container规则成功被执行到。");
+
+end
+
+rule "contains2"
+    when
+        $s:School()
+        $p:Person(className not contains $s.getClassName())
+    then
+        System.out.println("contains2规则成功被执行到。");
+end

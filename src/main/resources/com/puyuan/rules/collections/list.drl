@@ -1,0 +1,19 @@
+package com.puyuan.rules.collections;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.School
+
+
+
+rule "list"
+    when
+        $s:School();
+    then
+        System.out.println("School()的classNameList的第二个元素:" + $s.getClassNameList().get(1));
+end
+
+rule "list2"
+    when
+        $s:School(classNameList[1] == "三年二班");
+    then
+        System.out.println("list2被成功执行到。" + $s.getClassNameList().get(1));
+end

@@ -1,0 +1,11 @@
+package com.puyuan.rules.collections;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.School
+
+
+rule "map"
+    when
+        $s:School()
+    then
+        System.out.println("map规则获取key为二班的数据：" + $s.getKeyValues().get("二班"));
+end

@@ -1,0 +1,39 @@
+package com.puyuan.rules.one;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+rule "one"
+    when
+        eval(true)
+    then
+        System.out.println("Hello World!!");
+end
+
+rule "two"
+    when
+        $p:Person();
+    then
+        System.out.println("引用对象：" + $p);
+end
+
+rule "three"
+    when
+        $p:Person(name=="大离弟弟咯。",age==30);
+    then
+        System.out.println("传入参数确实存在一位名为大离弟弟咯。且年龄在30岁的人。");
+end
+
+rule "four"
+    when
+        $p:Person(name=="大离弟弟咯。",age==30);
+    then
+        $p.setAge(40);
+        update($p);
+        System.out.println("将名为" + $p.getName() + "的人年龄由30岁改成" + $p.getAge());
+end
+rule "five"
+    when
+        $p:Person(name=="大离弟弟咯。",age==40);
+    then
+        System.out.println("规则5执行成功。");
+end
