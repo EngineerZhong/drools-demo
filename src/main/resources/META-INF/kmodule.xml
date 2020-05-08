@@ -29,4 +29,24 @@
     <kbase name="rule7KB" packages="com.puyuan.rules.collections">
         <ksession name="collection"/>
     </kbase>
+
+    <kbase name="rule8KB" packages="com.puyuan.rules.loop">
+        <ksession name="noloop"/>
+    </kbase>
+
+    <kbase name="rule9KB" packages="com.puyuan.rules.salience_demo">
+        <ksession name="salience"/>
+    </kbase>
+
+    <kbase name="rule10KB" packages="com.puyuan.rules.date_effective">
+        <ksession name="dateEffective"/>
+    </kbase>
+
+    <kbase name="rule11KB" packages="com.puyuan.rules.activationgroup">
+        <ksession name="activationgroup"/>
+    </kbase>
+
+    <kbase name="rule12KB" packages="com.puyuan.rules.agenda_group">
+        <ksession name="agenda_group"/>
+    </kbase>
 </kmodule>

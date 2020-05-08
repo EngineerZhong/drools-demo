@@ -1,0 +1,30 @@
+package com.puyuan.rules.salience_demo;
+dialect  "mvel"
+
+rule "salienceRandom"
+    salience (Math.random() * 10 + 1)
+    when
+    then
+    System.out.println("salienceRandom规则执行。");
+end
+
+rule "salience10"
+    salience 10
+    when
+    then
+    System.out.println("salience10规则执行。");
+end
+
+rule "salience5"
+    salience 5
+    when
+    then
+    System.out.println("salience5规则执行。");
+end
+
+rule "salience2"
+    salience 2
+    when
+    then
+    System.out.println("salience2规则执行。");
+end

@@ -1,0 +1,19 @@
+package com.puyuan.rules.activationgroup;
+dialect  "mvel"
+
+rule "acative_group001"
+    activation-group "acative_group"
+    when
+        eval(true)
+    then
+        System.out.println("acative_group001 被命中。");
+end
+
+rule "acative_group002"
+    salience 10
+    activation-group "acative_group"
+    when
+        eval(true)
+    then
+        System.out.println("acative_group002 被命中。");
+end

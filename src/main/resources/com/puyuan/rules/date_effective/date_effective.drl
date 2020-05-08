@@ -1,0 +1,18 @@
+package com.puyuan.rules.date_effective;
+dialect  "mvel"
+
+rule "date_effective"
+    date-effective "2-May-2020"
+    when
+        eval(true)
+    then
+        System.out.println("当前日期大于等于date_effective 规则 2-May-2020");
+end
+
+rule "date_expires"
+    date-expires "9-May-2020"
+    when
+        eval(true)
+    then
+        System.out.println("当前日期小于 date_expires 规则 12-May-2020");
+end

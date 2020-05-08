@@ -1,0 +1,51 @@
+package com.puyuan.rules.loop;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+
+/*rule "noloop"
+    when
+        $p:Person(age == 30)
+    then
+        $p.setAge(30);
+        update($p)
+        System.out.println("未设置no-loop的效果，进入死循环。");
+end*/
+
+/*
+rule "loop"
+    no-loop true
+    when
+        $p:Person(age == 30)
+    then
+        $p.setAge(30);
+        update($p)
+        System.out.println("设置no-loop的效果。");
+end
+*/
+
+/*
+    如下规则相互修改Fact对象的属性值时也会导致死循环的出现。
+    使用更高级的属性解决no-loop导致的死循环。
+*/
+rule "testDeadLoop01"
+//    no-loop true
+    lock-on-active true
+    when
+        $p:Person(name=="大离弟弟咯。")
+    then
+        $p.setAge(30);
+        update($p);
+        System.out.println("testDeadLoop01 设置了no-loop");
+end
+
+rule "testDeadLoop02"
+//    no-loop true
+    lock-on-active true
+    when
+        $p:Person(age==30)
+    then
+        $p.setName("大离弟弟咯。");
+        update($p);
+        System.out.println("testDeadLoop02 设置了no-loop");
+end
