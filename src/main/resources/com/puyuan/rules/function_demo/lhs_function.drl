@@ -1,0 +1,13 @@
+package com.puyuan.rules.function_demo;
+dialect  "mvel"
+
+rule "lhs_function"
+    when
+         eval(functionBoolean());
+    then
+        System.out.println("lhs_function测试成功。");
+end
+
+function Boolean functionBoolean(){
+    return true;
+}

@@ -1,0 +1,11 @@
+package com.puyuan.rules.query_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+//query "person age is 25"
+//    person:Person(age == 25);
+//end
+
+query "person age is 25 and name is 大离弟弟咯"(String $queryParam)
+    person:Person(name==$queryParam,age == 25);
+end

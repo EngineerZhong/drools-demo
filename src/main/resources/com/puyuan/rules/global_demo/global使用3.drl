@@ -1,0 +1,23 @@
+package com.puyuan.rules.global_demo;
+dialect  "mvel"
+global java.util.List list;
+global com.puyuan.iotmanager.fact.Person person;
+
+rule "global使用3update"
+    when
+    then
+    System.out.println("global使用3update--》集合类+JavaBean会得到修改。" + list.size());
+    list.add("aaaa");
+    list.add("aaaa2");
+    list.add("aaaa3");
+    person.setName("大离弟弟咯。");
+
+end
+
+
+rule "global使用4update"
+    when
+    then
+    System.out.println("global使用4update--》集合类+JavaBean得到修改后的值。" + list.size());
+    System.out.println("global使用4update--》集合类+JavaBean得到修改后的值。" + person.getName());
+end

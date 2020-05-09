@@ -1,0 +1,10 @@
+package com.puyuan.rules.global_demo;
+dialect  "mvel"
+//global java.lang.Boolean count;
+global java.lang.Integer count;
+
+rule "global使用2的使用update1"
+    when
+    then
+        System.out.println("global使用2的使用update1" + count);
+end

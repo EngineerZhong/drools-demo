@@ -1,0 +1,31 @@
+package com.puyuan.rules.global_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+global java.lang.Integer count;
+
+
+rule "global使用"
+    when
+    then
+    System.out.println("globalupdate1====>" + count);
+    count = 10;
+    System.out.println("globalupdate1====>" + count);
+end
+
+rule "global使用2"
+    when
+    then
+    System.out.println("globalupdate2====>" + count);
+end
+
+
+rule "global使用3"
+    when
+        $total:Double() from
+            accumulate(Person(),
+            init(Double totals = 0.0),action(count=20;totals+=1;System.out.println(totals + ">>>" + count);),
+            reverse(totals-=1;System.out.println(totals + "<<<");),result(totals))
+    then
+    count = 90;
+    System.out.println($total + "globalupdate3====>" + count);
+end

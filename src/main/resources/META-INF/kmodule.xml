@@ -49,4 +49,21 @@
     <kbase name="rule12KB" packages="com.puyuan.rules.agenda_group">
         <ksession name="agenda_group"/>
     </kbase>
+    <kbase name="rule13KB" packages="com.puyuan.rules.timer_demo">
+        <ksession name="timer_demo"/>
+    </kbase>
+    <kbase name="rule14KB" packages="com.puyuan.rules.package_demo">
+        <ksession name="package_demo"/>
+    </kbase>
+
+    <kbase name="rule15KB" packages="com.puyuan.rules.global_demo">
+        <ksession name="global_demo"/>
+    </kbase>
+    <kbase name="rule16KB" packages="com.puyuan.rules.query_demo">
+        <ksession name="query_demo"/>
+    </kbase>
+
+    <kbase name="rule17KB" packages="com.puyuan.rules.function_demo">
+        <ksession name="function_demo"/>
+    </kbase>
 </kmodule>

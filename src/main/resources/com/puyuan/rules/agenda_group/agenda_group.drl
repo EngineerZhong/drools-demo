@@ -1,17 +1,44 @@
 package com.puyuan.rules.agenda_group;
 dialect  "mvel"
 
+//rule "agenda_group001"
+//    agenda-group "agenda_group001"
+//    when
+//        eval(true)
+//    then
+//        System.out.println("agenda_group001规则被命中。");
+//end
+//
+//
+//rule "agenda_group002"
+//    agenda-group "agenda_group002"
+//    when
+//        eval(true)
+//    then
+//        System.out.println("agenda_group002规则被命中。");
+//end
+//
+//rule "agenda_group003"
+//    agenda-group "agenda_group002"
+//    when
+//        eval(true)
+//    then
+//        System.out.println("agenda_group003规则被命中。");
+//end
+
+
 rule "agenda_group001"
     agenda-group "agenda_group001"
+    activation-group "ag1"
     when
         eval(true)
     then
         System.out.println("agenda_group001规则被命中。");
 end
 
-
 rule "agenda_group002"
     agenda-group "agenda_group002"
+    activation-group "ag2"
     when
         eval(true)
     then

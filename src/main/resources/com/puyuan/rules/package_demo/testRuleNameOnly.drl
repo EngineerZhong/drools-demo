@@ -1,0 +1,14 @@
+package com.puyuan.rules.package_demo;
+dialect  "mvel"
+
+rule "testRuleNameOnly"
+    when
+    then
+        System.out.println("testRuleNameOnly 被执行。");
+end
+
+rule "testRuleNameOnly02"
+    when
+    then
+        System.out.println("testRuleNameOnly02 被执行。");
+end

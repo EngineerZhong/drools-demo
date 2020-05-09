@@ -1,0 +1,30 @@
+package com.puyuan.rules.function_demo;
+dialect  "mvel"
+
+rule "function1"
+    when
+    then
+    function01();
+    System.out.println("function02()返回值：" + function02());
+    function03("大离弟弟咯。");
+    System.out.println("function04()返回值：" + function04("大离弟弟咯。"));
+end
+
+function void function01(){
+    System.out.println("输出一个无参无返回值的函数。");
+}
+
+
+function String function02(){
+    System.out.println("输出一个无参有返回值的函数。");
+    return "大离弟弟咯。";
+}
+
+function void function03(String name){
+    System.out.println("输出一个有参无返回值的函数。" + name);
+}
+
+function String function04(String name){
+    System.out.println("输出一个有参有返回值的函数。" + name);
+    return "大离弟弟咯。";
+}

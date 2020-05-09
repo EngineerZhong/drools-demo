@@ -1,0 +1,18 @@
+package com.puyuan.rules.function_demo;
+
+import com.puyuan.iotmanager.fact.FunctionStatic;
+//import function com.puyuan.iotmanager.fact.FunctionStatic.testStatic1;
+//import function com.puyuan.iotmanager.fact.FunctionStatic.testStatic2;
+//import function com.puyuan.iotmanager.fact.FunctionStatic.testStatic3;
+//import function com.puyuan.iotmanager.fact.FunctionStatic.testStatic4;
+
+
+rule "static_function001"
+    when
+        eval(true);
+    then
+        FunctionStatic.testStatic1();
+        System.out.println("testStatic2() 返回值" + FunctionStatic.testStatic2());
+        FunctionStatic.testStatic3("大离弟弟咯。");
+        System.out.println("testStatic2() 返回值" + FunctionStatic.testStatic4("大离弟弟咯。"));
+end
