@@ -1,0 +1,21 @@
+package com.puyuan.rules.inornotin;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+import com.puyuan.iotmanager.fact.School
+
+rule "inornotin"
+    when
+        School($cn:className)
+        Person(className in ("五班","六班",$cn))
+    then
+        System.out.println("验证in的复合限制规则。");
+end
+
+
+rule "inornotin2"
+    when
+        School($cn:className)
+        Person(className not in ("五班","六班",$cn))
+    then
+        System.out.println("验证not in的复合限制规则。");
+end

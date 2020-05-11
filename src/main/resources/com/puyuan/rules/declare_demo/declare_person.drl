@@ -1,0 +1,21 @@
+package com.puyuan.rules.declare_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.PersonExtend
+import java.util.Date
+
+declare PersonExtendPlus extends PersonExtend
+    type:String
+end
+
+
+rule "declare_person_extend"
+    when
+//        $p:PersonExtend(age == 20)
+    then
+        PersonExtendPlus p = new PersonExtendPlus();
+        p.setType("软件工程师");
+        p.setName("大离弟弟咯。");
+        p.setAge(25);
+        p.setDateOfBirth(new Date());
+        System.out.println(p);
+end

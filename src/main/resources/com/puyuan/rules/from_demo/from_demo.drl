@@ -1,0 +1,22 @@
+package com.puyuan.rules.from_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+import com.puyuan.iotmanager.fact.School
+
+//rule "from_demo"
+//    when
+//        $p:Person($ps:school)
+//        $s:School(className == "三年二班") from $ps
+//    then
+//        System.out.println("测试from值  " + $s.getClassName());
+//end
+
+
+rule "from_demo_2"
+    when
+        exists School()
+        $s:School()
+        $p:Person(className == "三年二班") from $s.classNameList
+    then
+        System.out.println("测试fromList值  " + $p.getName());
+end

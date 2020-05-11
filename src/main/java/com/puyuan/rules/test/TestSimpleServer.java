@@ -22,13 +22,13 @@ import java.util.List;
  * kieServer 远端执行规则引擎案例。
  * @author dalididilo
  */
-public class TestServer {
+public class TestSimpleServer {
 
     public static final String SERVER_URL = "http://192.168.1.190:8180/kie-server/services/rest/server";
     public static final String PASSWORD = "kieserver1!";
     public static final String USERNAME = "kieserver";
-    public static final String KIE_CONTAINER_ID = "iotmanager_1.0.1";
-    public static final String KIE_SESSION_ID = "ksessionId";
+    public static final String KIE_CONTAINER_ID = "hysc_1.0.0-SNAPSHOT";
+    public static final String KIE_SESSION_ID = "string_demo";
 
     public static void main(String[] args){
         // KisService 配置信息设置
@@ -41,34 +41,27 @@ public class TestServer {
         RuleServicesClient ruleServicesClient = kieServicesClient.getServicesClient(RuleServicesClient.class);
 
         // 规则输入条件
-        ApplyInfo applyInfo = new ApplyInfo();
-        Address familyAddress = new Address();
-        familyAddress.setProvince("福建省");
-        applyInfo.setFamilyAddress(familyAddress);
-        applyInfo.setAge(19);
+
         // 命令定义，包含插入数据，执行规则
         KieCommands kieCommands = KieServices.Factory.get().getCommands();
         List<Command<?>> commands = new LinkedList<>();
-        XiaoMing xiaoMing=new XiaoMing();
-        xiaoMing.setMoney(20);
-        xiaoMing.setBottle(0);
-        xiaoMing.setDrink(0);
-        commands.add(kieCommands.newInsert(applyInfo, "applyInfo"));
-        commands.add(kieCommands.newInsert(xiaoMing, "m"));
+        commands.add(kieCommands.newInsert("s","Hello Drools"));
         commands.add(kieCommands.newFireAllRules());
 
         ServiceResponse<ExecutionResults> results = ruleServicesClient.executeCommandsWithResults(KIE_CONTAINER_ID,
                 kieCommands.newBatchExecution(commands, KIE_SESSION_ID));
 
         // 返回值读取
-        ApplyInfo value = (ApplyInfo) results.getResult().getValue("applyInfo");
-        XiaoMing xm = (XiaoMing) results.getResult().getValue("m");
+//        ApplyInfo value = (ApplyInfo) results.getResult().getValue("applyInfo");
+//        XiaoMing xm = (XiaoMing) results.getResult().getValue("m");
+        Object s = results.getResult().getValue("s");
         System.out.println("#####服务器状态#####");
         System.out.println(results.getMsg());
         System.out.println(results.getType());
         System.out.println("#####数据结果######");
-        System.out.println(String.format("小明共喝了%d瓶",xm.getDrink()));
-        System.out.println(value.getName());
+        System.out.println(s.toString());
+
+
     }
 
 }

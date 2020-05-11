@@ -1,0 +1,11 @@
+package com.puyuan.rules.collect_demo;
+dialect  "mvel"
+import java.util.ArrayList
+import com.puyuan.iotmanager.fact.Person
+
+rule "collect_demo"
+    when
+        $array : ArrayList() from collect($p:Person(className == "三年二班"))
+    then
+        System.out.println("collect收集的集合总长度为" + $array.size());
+end

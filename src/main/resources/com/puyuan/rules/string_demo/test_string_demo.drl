@@ -1,0 +1,14 @@
+package com.puyuan.rules.string_demo;
+dialect  "mvel"
+import java.lang.String
+
+rule "test_string_demo"
+    when
+        $s:String();
+        exists String();
+        String($s == "Hello Drools")
+    then
+        $s = "Hello Drools Linking SpringBoot";
+
+        System.out.println("测试字符串插入。" + $s);
+end

@@ -66,4 +66,30 @@
     <kbase name="rule17KB" packages="com.puyuan.rules.function_demo">
         <ksession name="function_demo"/>
     </kbase>
+
+    <kbase name="rule18KB" packages="com.puyuan.rules.declare_demo">
+        <ksession name="declare_demo"/>
+    </kbase>
+    <kbase name="rule19KB" packages="com.puyuan.rules.inornotin">
+        <ksession name="inornotin"/>
+    </kbase>
+
+    <kbase name="rule20KB" packages="com.puyuan.rules.exist_demo">
+        <ksession name="exist_demo"/>
+    </kbase>
+
+    <kbase name="rule21KB" packages="com.puyuan.rules.forall_demo">
+        <ksession name="forall_demo"/>
+    </kbase>
+    <kbase name="rule22KB" packages="com.puyuan.rules.string_demo">
+        <ksession name="string_demo"/>
+    </kbase>
+
+    <kbase name="rule23KB" packages="com.puyuan.rules.from_demo">
+        <ksession name="from_demo"/>
+    </kbase>
+
+    <kbase name="rule24KB" packages="com.puyuan.rules.collect_demo">
+        <ksession name="collect_demo"/>
+    </kbase>
 </kmodule>

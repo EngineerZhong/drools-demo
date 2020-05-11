@@ -1,0 +1,18 @@
+package com.puyuan.rules.exist_demo;
+dialect  "mvel"
+import com.puyuan.iotmanager.fact.Person
+
+rule "exist_demo"
+    when
+        exists Person()
+    then
+        System.out.println("Person 在工作内存中。");
+end
+
+rule "exist_demo2"
+    when
+        not (exists Person());
+    then
+        System.out.println("Person 不在工作内存中。");
+end
+

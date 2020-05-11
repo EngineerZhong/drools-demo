@@ -9,6 +9,8 @@ public class Person {
     private Integer age;
     private String className;
 
+    private School school;
+
 
     public Person() {
     }

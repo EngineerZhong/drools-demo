@@ -1,0 +1,20 @@
+package com.puyuan.rules.declare_demo;
+
+declare Person
+    name:String
+    age:int
+end
+
+rule "declare_demo"
+    when
+
+    then
+        insert(new Person("大离弟弟咯。",25));
+end
+
+rule "declareTest"
+    when
+        $p:Person(name == "大离弟弟咯。")
+    then
+        System.out.println("使用declare声明来实现insert后进行操作。" + $p.getName());
+end
