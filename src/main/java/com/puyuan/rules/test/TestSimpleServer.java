@@ -3,6 +3,7 @@ package com.puyuan.rules.test;
 import com.puyuan.iotmanager.fact.Address;
 import com.puyuan.iotmanager.fact.ApplyInfo;
 import com.puyuan.iotmanager.fact.XiaoMing;
+import com.ruleengine.hysc.fact.DroolsResult;
 import org.kie.api.KieServices;
 import org.kie.api.command.Command;
 import org.kie.api.command.KieCommands;
@@ -45,8 +46,12 @@ public class TestSimpleServer {
         // 命令定义，包含插入数据，执行规则
         KieCommands kieCommands = KieServices.Factory.get().getCommands();
         List<Command<?>> commands = new LinkedList<>();
-        commands.add(kieCommands.newInsert("s","Hello Drools"));
+        DroolsResult result = new DroolsResult();
+        commands.add(kieCommands.newSetGlobal("res",result));
+        commands.add(kieCommands.newInsert("Hello Drools","s"));
         commands.add(kieCommands.newFireAllRules());
+        commands.add(kieCommands.newGetGlobal("res"));
+        commands.add(kieCommands.newGetObjects("s"));
 
         ServiceResponse<ExecutionResults> results = ruleServicesClient.executeCommandsWithResults(KIE_CONTAINER_ID,
                 kieCommands.newBatchExecution(commands, KIE_SESSION_ID));
@@ -54,12 +59,13 @@ public class TestSimpleServer {
         // 返回值读取
 //        ApplyInfo value = (ApplyInfo) results.getResult().getValue("applyInfo");
 //        XiaoMing xm = (XiaoMing) results.getResult().getValue("m");
-        Object s = results.getResult().getValue("s");
+        DroolsResult detail = (DroolsResult) results.getResult().getValue("res");
         System.out.println("#####服务器状态#####");
         System.out.println(results.getMsg());
         System.out.println(results.getType());
         System.out.println("#####数据结果######");
-        System.out.println(s.toString());
+        System.out.println(results.getResult().getValue("s"));
+        System.out.println(detail.toString());
 
 
     }

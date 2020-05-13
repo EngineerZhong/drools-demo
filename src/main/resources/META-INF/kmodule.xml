@@ -92,4 +92,16 @@
     <kbase name="rule24KB" packages="com.puyuan.rules.collect_demo">
         <ksession name="collect_demo"/>
     </kbase>
+
+    <kbase name="rule25KB" packages="com.puyuan.rules.alarm_demo">
+        <ksession name="alarm_demo"/>
+    </kbase>
+
+    <kbase name="rule26KB" packages="com.puyuan.rules.bpmn_demo">
+        <ksession name="hello_bpmn"/>
+    </kbase>
+
+    <kbase name="rule27KB" packages="com.puyuan.rules.xlsx_demo">
+        <ksession name="xlsx_demo"/>
+    </kbase>
 </kmodule>

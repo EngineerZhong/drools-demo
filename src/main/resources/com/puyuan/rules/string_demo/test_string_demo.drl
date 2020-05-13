@@ -2,13 +2,16 @@ package com.puyuan.rules.string_demo;
 dialect  "mvel"
 import java.lang.String
 
+import java.lang.String
+global com.ruleengine.hysc.fact.DroolsResult res
+
 rule "test_string_demo"
     when
         $s:String();
-        exists String();
         String($s == "Hello Drools")
     then
         $s = "Hello Drools Linking SpringBoot";
-
+        res.setCode("200");
+        res.setInfo($s);
         System.out.println("测试字符串插入。" + $s);
 end

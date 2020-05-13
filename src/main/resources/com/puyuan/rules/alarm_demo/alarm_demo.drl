@@ -1,0 +1,60 @@
+package com.puyuan.rules.alarm_demo;
+import com.puyuan.iotmanager.fact.AlarmBean
+import com.puyuan.iotmanager.fact.InsertValue
+/*
+环境温度阀值
+*/
+rule "alarm_rule001"
+	when
+		$bean : AlarmBean()
+		$value : InsertValue(type == $bean.getType()
+		, collectValue <= $bean.getLower())
+	then
+		System.out.println("规则001被命中");
+		$value.setGrade( "预警" );
+		update($value)
+end
+
+rule "alarm_rule002"
+	when
+		$bean : AlarmBean()
+		$value : InsertValue(type == $bean.getType()
+		, collectValue >= $bean.getUp())
+	then
+		System.out.println("alarm_rule002被命中");
+		$value.setGrade( "预警" );
+		update($value)
+end
+
+rule "alarm_rule003"
+	when
+	    $bean : AlarmBean()
+        $value : InsertValue(type == $bean.getType()
+        , collectValue > $bean.getLower() , collectValue < $bean.getUp() )
+	then
+	System.out.println("规则002被命中");
+		$value.setGrade( "正常" );
+        update($value)
+end
+
+rule "alarm_rule004"
+	when
+	    $bean : AlarmBean()
+        $value : InsertValue(type == $bean.getType()
+        , collectValue < 15.0)
+	then
+        System.out.println("alarm_rule004被命中");
+		$value.setGrade( "告警" );
+		update($value)
+end
+
+rule "alarm_rule005"
+	when
+	    $bean : AlarmBean()
+        $value : InsertValue(type == $bean.getType()
+        , collectValue > 55.0 )
+	then
+        System.out.println("alarm_rule005被命中");
+		$value.setGrade( "告警" );
+		update($value)
+end

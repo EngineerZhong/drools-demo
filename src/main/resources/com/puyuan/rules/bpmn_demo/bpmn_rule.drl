@@ -1,0 +1,24 @@
+package com.puyuan.rules.bpmn_demo;
+dialect  "mvel"
+
+rule "bpmn_rule"
+    ruleflow-group "flowNameSame"
+    when
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+rule "bpmn_rule2"
+    ruleflow-group "flowNameSame"
+    when
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+
+rule "bpmn_rule3"
+    ruleflow-group "flowNameNotSame"
+    when
+    then
+        System.out.println(drools.getRule().getName());
+end
