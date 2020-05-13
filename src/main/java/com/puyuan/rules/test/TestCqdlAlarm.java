@@ -1,7 +1,6 @@
 package com.puyuan.rules.test;
-
-import com.puyuan.iotmanager.fact.AlarmBean;
-import com.puyuan.iotmanager.fact.InsertValue;
+import com.ruleengine.hysc.fact.AlarmBean;
+import com.ruleengine.hysc.fact.InsertValue;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;

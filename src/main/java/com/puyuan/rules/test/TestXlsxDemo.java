@@ -1,7 +1,7 @@
 package com.puyuan.rules.test;
 
-import com.puyuan.iotmanager.fact.AlarmBean;
-import com.puyuan.iotmanager.fact.InsertValue;
+import com.ruleengine.hysc.fact.AlarmBean;
+import com.ruleengine.hysc.fact.InsertValue;
 import org.drools.decisiontable.InputType;
 import org.drools.decisiontable.SpreadsheetCompiler;
 import org.kie.api.KieServices;
@@ -24,11 +24,11 @@ public class TestXlsxDemo {
         /**
          * 打印决策表对应的drl文件。
          */
-//        File file = new File("/Users/dalididilo/Downloads/puyuan-iot/src/main/resources/com/puyuan/rules/xlsx_demo/xslx_demo.xlsx");
-//        InputStream in = new FileInputStream(file);
-//        SpreadsheetCompiler compiler = new SpreadsheetCompiler();
-//        String drl = compiler.compile(in, InputType.XLS);
-//        System.out.println(drl);
+        File file = new File("/Users/dalididilo/Downloads/puyuan-iot/src/main/resources/com/puyuan/rules/xlsx_demo/xslx_demo.xlsx");
+        InputStream in = new FileInputStream(file);
+        SpreadsheetCompiler compiler = new SpreadsheetCompiler();
+        String drl = compiler.compile(in, InputType.XLS);
+        System.out.println(drl);
 
         KieContainer container = KieServices.Factory.get().getKieClasspathContainer();
         KieSession kieSession = container.newKieSession("xlsx_demo");
@@ -42,6 +42,7 @@ public class TestXlsxDemo {
         kieSession.insert(alarmBean);
         kieSession.insert(insertValue);
         int count = kieSession.fireAllRules();
+        System.out.println(insertValue.getGrade());
         System.out.println(String.format("总共执行 %d 条规则。",count));
         kieSession.dispose();
     }
