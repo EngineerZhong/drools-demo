@@ -104,4 +104,8 @@
     <kbase name="rule27KB" packages="com.puyuan.rules.xlsx_demo">
         <ksession name="xlsx_demo"/>
     </kbase>
+
+    <kbase name="rule28KB" packages="com.puyuan.rules.test_listener_demo">
+        <ksession name="test_listener_demo"/>
+    </kbase>
 </kmodule>

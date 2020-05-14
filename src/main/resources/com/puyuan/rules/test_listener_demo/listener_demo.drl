@@ -1,0 +1,31 @@
+package com.puyuan.rules.test_listener_demo;
+import com.puyuan.iotmanager.fact.Person
+
+rule "listener_demo_insert"
+    no-loop true
+    when
+    then
+        Person person = new Person("大离弟弟咯",25);
+        insert(person);
+        System.out.println(drools.getRule().getName() + "被执行到。");
+end
+
+rule "listener_demo_modify"
+    no-loop true
+    when
+        $p:Person(name == "大离弟弟咯")
+    then
+        modify($p){
+            setName("大离弟弟咯。")
+        }
+        System.out.println(drools.getRule().getName() + "被执行到。");
+end
+
+rule "listener_demo_delete"
+    no-loop true
+    when
+        $p:Person(name == "大离弟弟咯。")
+    then
+        delete($p);
+        System.out.println(drools.getRule().getName() + "被执行到。");
+end

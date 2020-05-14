@@ -1,10 +1,14 @@
 package com.puyuan.rules.alarm_demo;
-import com.puyuan.iotmanager.fact.AlarmBean
-import com.puyuan.iotmanager.fact.InsertValue
+//import com.puyuan.iotmanager.fact.AlarmBean
+//import com.puyuan.iotmanager.fact.InsertValue
+import com.ruleengine.hysc.fact.InsertValue;
+import com.ruleengine.hysc.fact.AlarmBean;
 /*
 环境温度阀值
 */
 rule "alarm_rule001"
+    ruleflow-group "alarm_demo"
+    no-loop true
 	when
 		$bean : AlarmBean()
 		$value : InsertValue(type == $bean.getType()
@@ -16,6 +20,8 @@ rule "alarm_rule001"
 end
 
 rule "alarm_rule002"
+    ruleflow-group "alarm_demo"
+    no-loop true
 	when
 		$bean : AlarmBean()
 		$value : InsertValue(type == $bean.getType()
@@ -27,6 +33,8 @@ rule "alarm_rule002"
 end
 
 rule "alarm_rule003"
+    ruleflow-group "alarm_demo"
+    no-loop true
 	when
 	    $bean : AlarmBean()
         $value : InsertValue(type == $bean.getType()
@@ -38,6 +46,8 @@ rule "alarm_rule003"
 end
 
 rule "alarm_rule004"
+    ruleflow-group "alarm_demo"
+    no-loop true
 	when
 	    $bean : AlarmBean()
         $value : InsertValue(type == $bean.getType()
@@ -49,6 +59,8 @@ rule "alarm_rule004"
 end
 
 rule "alarm_rule005"
+    ruleflow-group "alarm_demo"
+    no-loop true
 	when
 	    $bean : AlarmBean()
         $value : InsertValue(type == $bean.getType()
