@@ -12,8 +12,6 @@ import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 import org.kie.server.client.RuleServicesClient;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,22 +48,21 @@ public class TestBusinessProgressServer {
         alarmBean.setUp(50);
         alarmBean.setLower(20);
         InsertValue insertValue = new InsertValue();
-        insertValue.setCollectValue(11);
+        insertValue.setCollectValue(15);
         commands.add(kieCommands.newInsert(alarmBean,"bean"));
         commands.add(kieCommands.newInsert(insertValue,"value"));
         commands.add(kieCommands.newStartProcess("alarm_jbpm"));
-        commands.add(kieCommands.newGetObjects("value"));
         ServiceResponse<ExecutionResults> results = ruleServicesClient.executeCommandsWithResults(KIE_CONTAINER_ID,
                 kieCommands.newBatchExecution(commands, KIE_SESSION_ID));
 
         // 返回值读取
 //        ApplyInfo value = (ApplyInfo) results.getResult().getValue("applyInfo");
-        List result = (ArrayList) results.getResult().getValue("value");
+        InsertValue result = (InsertValue) results.getResult().getValue("value");
         System.out.println("#####服务器状态#####");
         System.out.println(results.getMsg());
         System.out.println(results.getType());
         System.out.println("#####数据结果######");
-        System.out.println(((InsertValue)result.get(1)).getGrade());
+        System.out.println(result.getGrade());
 
     }
 
