@@ -108,4 +108,8 @@
     <kbase name="rule28KB" packages="com.puyuan.rules.test_listener_demo">
         <ksession name="test_listener_demo"/>
     </kbase>
+
+    <kbase name="rule29KB" packages="com.puyuan.rules.morefifteenalarm_demo">
+        <ksession name="morefifteenalarm_demo" type="stateful"/>
+    </kbase>
 </kmodule>

@@ -1,0 +1,136 @@
+package com.puyuan.rules.morefifteenalarm_demo;
+//generated from Decision Table
+import com.ruleengine.hysc.fact.AlarmBean;
+import com.ruleengine.hysc.fact.InsertValue;
+import java.util.List;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.Map;
+import java.util.HashMap;
+// rule values at A10, header at A5
+rule "环境温度阀值是否告警_10"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue < 15)
+	then
+//		System.out.println("告警");
+		$value.setGrade("告警");update($value)
+end
+
+// rule values at A11, header at A5
+rule "环境温度阀值是否告警_11"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue > 55)
+	then
+//		System.out.println("告警");
+		$value.setGrade("告警");update($value)
+end
+
+// rule values at A12, header at A5
+rule "环境温度阀值是否告警_12"
+	when
+		$bean:AlarmBean();
+$value:InsertValue($value.collectValue < $bean.getUp(), $value.collectValue > $bean.getLower())
+	then
+		System.out.println("正常");$value.setGrade("正常");update($value)
+end
+
+// rule values at A13, header at A5
+rule "环境温度阀值是否告警_13"
+	when
+		$bean:AlarmBean();
+$value:InsertValue($value.collectValue < 55, $value.collectValue > $bean.getUp())
+	then
+		System.out.println("预警");$value.setGrade("预警");update($value)
+end
+
+// rule values at A14, header at A5
+rule "环境温度阀值是否告警_14"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue > $bean.getUp(), $value.collectValue == 55)
+	then
+		System.out.println("预警");$value.setGrade("预警");update($value)
+end
+
+// rule values at A15, header at A5
+rule "环境温度阀值是否告警_15"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue == $bean.getUp())
+	then
+		System.out.println("预警");$value.setGrade("预警");update($value)
+end
+
+// rule values at A16, header at A5
+rule "环境温度阀值是否告警_16"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue < $bean.getLower(), $value.collectValue > 15)
+	then
+		System.out.println("预警");$value.setGrade("预警");update($value)
+end
+
+// rule values at A17, header at A5
+rule "环境温度阀值是否告警_17"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue == $bean.getLower())
+	then
+		System.out.println("预警");$value.setGrade("预警");update($value)
+end
+
+// rule values at A18, header at A5
+rule "环境温度阀值是否告警_18"
+	when
+		$bean:AlarmBean();
+        $value:InsertValue($value.collectValue < $bean.getLower(), $value.collectValue == 15)
+	then
+		System.out.println("预警");
+		$value.setGrade("预警");
+		update($value)
+end
+
+//rule "环境温度阀值是否告警_19"
+//    agenda-group "detail"
+//	when
+//	    $m:Boolean() from accumulate($li:List(size > 0),init(Integer alarmCount = 0;)
+//        ,action(
+//            for(int i = 0;i<$li.size();i++){
+//                InsertValue ins = (InsertValue)$li.get(i);
+//                if(ins.getGrade() == "告警"){
+//                    alarmCount +=1;
+//                    if(alarmCount >=2 && i == 15){
+//                        System.out.println("统计15条，已超出告警范围。");
+//                        break;
+//                    }
+//                }
+//            };
+//        ),result(alarmCount >= 2))
+//	then
+//	    System.out.println("是否告警 ：：：" + $m);
+//end
+
+rule "环境温度阀值是否告警_19"
+    agenda-group "detail"
+	when
+	    $m:Map() from accumulate($value:InsertValue()
+	    ,init(Map device = new HashMap();)
+        ,action(
+            String key = $value.getDeviceId();
+            if($value.getGrade() != "告警"){
+                device.put(key,0);
+            }else{
+                if(device.containsKey(key)){
+                    Integer count = (Integer)device.get(key);
+                    count++;
+                    device.put(key,count);
+                }else{
+                    device.put($value.getDeviceId(),1);
+                }
+            }
+        ),result(device))
+	then
+	    System.out.println($m);
+end

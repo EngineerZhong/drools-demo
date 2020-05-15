@@ -6,8 +6,27 @@ package com.ruleengine.hysc.fact;
  */
 
 public class InsertValue implements java.io.Serializable {
+    @Override
+    public String toString() {
+        return "InsertValue{" +
+                "deviceId='" + deviceId + '\'' +
+                ", type='" + type + '\'' +
+                ", grade='" + grade + '\'' +
+                ", watchType='" + watchType + '\'' +
+                ", collectValue=" + collectValue +
+                '}';
+    }
 
     static final long serialVersionUID = 1L;
+    private String deviceId;
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
 
     @org.kie.api.definition.type.Label("传感器类型")
     private java.lang.String type;
